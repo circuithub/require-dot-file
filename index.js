@@ -1,5 +1,6 @@
 var
   fs              = require('fs'),
+  process         = require('process'),
   path            = require('path')
 ;
 
@@ -36,7 +37,7 @@ module.exports = function(file, directory, maxSteps) {
   };
 
   // start walk from outside require-dot-files directory
-  directory = directory || path.join(__dirname, path.sep , '..');
+  directory = directory || process.cwd();
   walk(directory);
 
   if(!requirePath) {
